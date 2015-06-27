@@ -48,7 +48,7 @@ setup_apache_2_2_x() {
     add_line_to_file "ServerTokens Prod" "$MAIN_CONFIG_FILE_2_2_X"
 
     # Enable custom Virtual Host
-    execute "cat $CONFIGS_DIR/2.2.x.conf \
+    execute "cat $CONFIGS_DIR/2.2.x.apacheconf \
                 | sed 's|{{path}}|$CONTENT_DIR|g' \
                 > /etc/apache2/sites-available/2.2.x.conf"
     sudo a2dissite default
@@ -91,7 +91,7 @@ setup_apache_2_4_x() {
     add_line_to_file "ServerTokens Prod" "$MAIN_CONFIG_FILE_2_4_X"
 
     # Enable custom Virtual Host
-    execute "cat $CONFIGS_DIR/2.4.x.conf \
+    execute "cat $CONFIGS_DIR/2.4.x.apacheconf \
                 | sed 's|{{path}}|$CONTENT_DIR|g' \
                 > /usr/local/apache2/conf/extra/2.4.x.conf"
     add_line_to_file "Include conf/extra/2.4.x.conf" "$MAIN_CONFIG_FILE_2_4_X"
